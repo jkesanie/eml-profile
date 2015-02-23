@@ -1,5 +1,4 @@
-# eml-profile
-GBIF EML profile
+# GBIF EML profile
 
 The GBIF Metadata Profile XML schema. Tagged versions are released officially on [http://rs.gbif.org](http://rs.gbif.org/schema/eml-gbif-profile/).
 
