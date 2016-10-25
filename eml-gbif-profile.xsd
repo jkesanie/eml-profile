@@ -388,7 +388,11 @@
           </xs:annotation>
         </xs:element>
       </xs:sequence>
-      <xs:attribute name="id" type="xs:string" use="optional"/>
+      <xs:attribute name="id" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation>A unique identifier for the project. This can be used to link multiple datasets that are associated in some way with the same project.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
     </xs:complexType>
   </xs:element>
 
