@@ -1,0 +1,7 @@
+root = true
+
+[*]
+end_of_line = lf
+
+[{annotations.xsl,eml2iso19139.xsl,eml.xsd,eml-gbif-profile.xsd}]
+end_of_line = crlf
