@@ -551,13 +551,124 @@
 
   <xs:complexType name="citationType">
     <xs:annotation>
-      <xs:documentation>A single literature citation with an optional identifier</xs:documentation>
+      <xs:documentation>A literature citation with optional structured values as attributes including an identifier</xs:documentation>
     </xs:annotation>
     <xs:simpleContent>
       <xs:extension base="NonEmptyStringType">
         <xs:attribute name="identifier" use="optional" type="xs:string">
           <xs:annotation>
-            <xs:documentation>A URI, DOI or other persistent identifier for the  citation</xs:documentation>
+            <xs:documentation>A URI, DOI or any other persistent identifier for the  citation</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <!-- Structured citations, see https://github.com/gbif/eml-profile/issues/4 -->
+        <xs:attribute name="type" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>CSL type that defines the kind of citation and it's valid fields, e.g. ARTICLE-JOURNAL, BOOK, CHAPTER, DATASET, WEBPAGE. See https://aurimasv.github.io/z2csl/typeMap.xml for a mapping of CSL types to field sets</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="doi" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The DOI for this publication</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="author" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The author list concatenated by semicolons. Each author should be given in one of the 3 Bibtex forms with FamilyName, GivenName being preferred. E.g. Mondaca, José; Brinch Hansen, Per; van Beethoven, Ludwig</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="editor" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The editor list. See author for details on the name format</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="title" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The primary title of the item</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="containerAuthor" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>author(s) of the container holding the item (e.g. the book author for a book chapter). type=NAME[]</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="containerTitle" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The title of the container holding the item (e.g. the book title for a book chapter, the journal title for a journal article)</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="issued" use="optional" type="yearDate">
+          <xs:annotation>
+            <xs:documentation>The date the item was issued/published in possibly truncated ISO format, e.g. 1998, 1998-05 or 1998-05-21.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="accessed" use="optional" type="yearDate">
+          <xs:annotation>
+            <xs:documentation>The date the item has been accessed.</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="collectionTitle" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The title of the collection holding the item (e.g. the series title for a book)</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="collectionEditor" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The editor(s) of the collection holding the item (e.g. the series editor for a book). type=NAME[]</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="volume" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The (container) volume holding the item (e.g. “2” when citing a chapter from book volume 2). type=NUMBER</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="issue" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The (container) issue holding the item (e.g. “5” when citing a journal article from journal volume 2, issue 5). type=NUMBER</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="edition" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>The (container) edition holding the item (e.g. “3” when citing a chapter in the third edition of a book). type=NUMBER</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="page" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Range of pages the item (e.g. a journal article) covers in a container (e.g. a journal issue)</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="publisher" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Publisher name</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="publisherPlace" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Geographic location of the publisher</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="version" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Version of the dataset/source</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="isbn" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>International Standard Book Number</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="issn" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>International Standard Serial Number</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="url" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>Link to webpage for electronic resources</xs:documentation>
+          </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="note" use="optional" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>A (short) inline note giving additional item details (e.g. a concise summary or commentary)</xs:documentation>
           </xs:annotation>
         </xs:attribute>
       </xs:extension>
